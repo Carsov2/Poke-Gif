@@ -1,101 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <!-- Bootstrap CSS -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
     />
     <link
     rel="stylesheet"
     href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
     />
     <title>I wanna be the very best! Like no one ever was!</title>
-  </head>
+</head>
 
-  <body class="img1">
-    <!--Header-->
-    <nav
-      class="navbar navbar-expand-lg bg-danger d-flex justify-content-center px-3"
-    >
-      <a class="navbar-brand" href="#">
-        <img class="logo" src="./assets/images/pokemon-logo.png" alt="" />
-      </a>
-      <h1 class="poke-trainer">POKE-Trainer</h1>
-    </nav>
-
-    <!--game section-->
-    <section class="game-container">
-      <!--left container-->
-      <div class="con1">
-        <!--search-->
-        <form class="form-inline my-lg-0">
-          <input
-            class="form-control mr-sm-2 w-100"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
-
-        <!--pokemon types-->
-        <select
-          class="pokemon-types"
-          aria-label="Default select example"
-          id="pokemonSelect"
+<body class="img1">
+    <div class="container d-flex flex-column min-vh-100">
+    <div class="row">
+        <div class="col-12 bg-danger rounded">
+        <h1 class="text-white" style="text-align: center">Poke-Trainer</h1>
+        </div>
+    </div>
+    <div class="row flex-grow-1">
+        <div
+        class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-start"
+        style="padding-top: 100px"
         >
-          <option selected>Select pokemon types</option>
-          <option value="type 1">type 1</option>
-          <!--use js to fill it-->
-        </select>
+        <input
+            class="btn btn-dark mb-2 mt-2"
 
-        <!--favorite container-->
-        <div class="favorite-container d-flex flex-column justify-content-end">
-          <!--<div class="h-50 bg-warning mb-5"></div>-->
-          <button type="button" class="btn btn-info w-100">Favorite</button>
+            id="auto-complete"
+            placeholder="Search the PokeDex"
+        />
+
+        <button id='searchBtn' class="btn btn-dark text-white mb-2">Search</button>
+
+
+        <div class="dropdown">
+            <button
+            class="btn btn-secondary mb-2 dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >
+            Pokemon Types
+            </button>
+
+            <ul id ="dropItem" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <!-- <li><a class="dropdown-item" style="background-color: rgb(167, 152, 112); color: black;" href="#">Normal</a></li>
+
+            
+
+            <li><a class="dropdown-item" style="background-color: rgb(255, 123, 0); color: black;" href="#">Fire</a></li>
+            <li><a class="dropdown-item" style="background-color: blue; color: black;" href="#">Water</a></li>
+            <li><a class="dropdown-item" style="background-color: green; color: black;" href="#">Grass</a></li>
+            <li><a class="dropdown-item" style="background-color: yellow; color: black;" href="#">Electric</a></li>
+            <li><a class="dropdown-item" style="background-color: aqua; color: black;" href="#">Ice</a></li>
+            <li><a class="dropdown-item" style="background-color: red; color: black;" href="#">Fighting</a></li>
+            <li><a class="dropdown-item" style="background-color: purple; color: black;" href="#">Poison</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(134, 105, 52); color: black;" href="#">Ground</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(133, 70, 133); color: black;" href="#">Flying</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(252, 124, 146); color: black;" href="#">Psychic</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(108, 146, 64); color: black;" href="#">Bug</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(172, 86, 5); color: black;" href="#">Rock</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(68, 1, 68); color: black;" href="#">Ghost</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(22, 20, 4); color: black;" href="#">Dark</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(0, 0, 59); color: rgb(73, 73, 73);" href="#">Dragon</a></li>
+            <li><a class="dropdown-item" style="background-color: rgb(135, 142, 150); color: black;" href="#">Steel</a></li>
+
+            <li><a class="dropdown-item" style="background-color: rgb(255, 190, 202); color: black;" href="#">Fairy</a></li> -->
+
+            </ul>
         </div>
-      </div>
-      <!--right container-->
-      <div class="con2">
-        <div class="your-team">Your Team</div>
-        <div class="cards">
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
-          <div class="pokemon"></div>
+
+        <img
+            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTY1NzJhOWIwYjI3ZTUwNDg4NDM2ZjE4ODcwODM1YzMzMGQ3YzUwNSZjdD1n/qFFZAT3knulwCq05Wp/giphy.gif"
+            alt="dance dance Pikachu"
+            class="h-75 mw-100"
+        />
+        <button class="btn btn-dark mt-2">Favorite</button>
         </div>
-      </div>
-    </section>
+
+        <div class="col" style="padding-top: 200px">
+        <h1 class="text-white bg-dark rounded" style="text-align: center">
+            My Team
+        </h1>
+
+
+        <div class="row justify-content-center" style="height: 60%">
+            <div class="col-4 rounded bg-secondary cards m-1">Pokemon 1</div>
+            <div class="col-4 rounded bg-secondary cards m-1">Pokemon 2</div>
+            <div class="col-4 rounded bg-secondary cards m-1">Pokemon 3</div>
+
+
+            <div class="rounded bg-secondary cards m-1">Pokemon 4</div>
+            <div class="rounded bg-secondary cards m-1">Pokemon 5</div>
+            <div class="rounded bg-secondary cards m-1">Pokemon 6</div>
+        </div>
+        </div>
+
+        <!-- <div class="col-12 bg-light"> -->
+    </div>
+    <div class="row">
+        <button class="col btn btn-light text-dark mt-4">Reset</button>
+    </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="./assets/JavaScript/Script.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
