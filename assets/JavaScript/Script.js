@@ -8,7 +8,9 @@ var poke = "Whos That Pokemon"
 let searchEl = document.getElementById('auto-complete')
 let searchBtn = document.getElementById('searchBtn')
 let dropItem = document.getElementById('dropItem')
+let Favorite = document.getElementById('Favorite')
 var dropDownBtn = document.getElementById('dropdownMenuButton1')
+
 
 var allPokemonData = [
     {
@@ -671,7 +673,21 @@ $(function() {
 searchBtn.addEventListener("click", function() {
     getGiphy(searchEl.value)
 })
+var currentgif; 
+var emptyimage;
 
+Favorite.addEventListener("click", function() {
+console.log (currentgif)
+for (let i = 0; i < 6; i++) {
+    var id = "img" + (i + 1)
+    var img = document.getElementById (id)
+    console.log (img)
+    if (img.getAttribute('src')=="#"){
+         img.src=currentgif
+         return
+     }
+}
+})
 function init() {
     //document.getElementById("btnSearch").addEventListener("click", function() {
       event.preventDefault(); //to stop the page reload
@@ -689,12 +705,14 @@ function init() {
       .then(content => {
         console.log(content)
       giphyImgEl.setAttribute("src", content.data[0].images.downsized.url);
+      currentgif = content.data[0].images.downsized.url;
       })
       .catch(err => {
       console.error(err);
       });
   
   }
+
   
 
 
