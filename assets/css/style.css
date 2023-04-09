@@ -11,6 +11,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* .text-muted {
@@ -34,7 +35,9 @@ body {
   padding: 40px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 20px;
+  min-height: 100vh;
 }
 .game-console .left-container {
   flex: 0.3;
@@ -72,9 +75,6 @@ body {
 
 .reset-container {
   width: 100vw;
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
 }
 .reset-container button {
   padding: 20px 0px;
@@ -83,10 +83,8 @@ body {
 @media screen and (max-width: 800px) {
   .game-console {
     flex-direction: column;
+    align-items: center;
     gap: 10px;
-  }
-  .reset-container {
-    position: relative;
   }
 }
 
