@@ -617,57 +617,29 @@ var allPokemonData = [
         "name": "Mew",
         "url": "https://pokeapi.co/api/v2/pokemon/151/"
     }
-  ];
+];
 
 function getPokemons() {
-  allPokemonData.forEach(i => {
-    // console.log(i)
+allPokemonData.forEach(i => {
     var li = document.createElement("li")
     var a = document.createElement("a")
     a.textContent = i.name
     a.classList.add('dropdown-item')
     a.href = '#'
+    a.addEventListener('click', function() {
+        searchEl.value = i.name;
+    })
     li.appendChild(a)
     dropItem.appendChild(li)
-  });
+});
 }
-
-// function getAllPokemon () {
-//   let pokeName = searchEl.value;
-//   let requestUrl = `https://pokeapi.co/api/v2/pokemon?limit=151`
-//   fetch (requestUrl)
-//     .then(function(response) {
-//       return response.json()
-//     })
-//     .then(function(data) {
-//       console.log(data.results)
-//       //create a for loop
-
-//       data.results.forEach(i => {
-  //         console.log(i)
-  //         var li = document.createElement("li")
-  //         var a = document.createElement("a")
-  //         a.textContent = i.name
-  //         a.classList.add('dropdown-item')
-  //         a.href = '#'
-  //         li.appendChild(a)
-//         dropItem.appendChild(li)
-//       });
-//       allPokemonData = data.results;
-//     })
-//     .catch(function(err) {
-//       console.log("error here", err);
-//     })
-// };
 
 dropDownBtn.addEventListener("click", getPokemons)
 
-//getAllPokemon();
-
 $(function() {
-  $('#auto-complete').autocomplete({
+$('#auto-complete').autocomplete({
     source: allPokemonData.map(({ name }) => name)
-  });
+});
 });
 
 searchBtn.addEventListener("click", function() {
@@ -677,21 +649,32 @@ var currentgif;
 var emptyimage;
 
 Favorite.addEventListener("click", function() {
-console.log (currentgif)
-for (let i = 0; i < 6; i++) {
-    var id = "img" + (i + 1)
-    var img = document.getElementById (id)
-    console.log (img)
-    if (img.getAttribute('src')=="#"){
-         img.src = currentgif
-         return
-     }
-}
-})
+    console.log(currentgif);
+    for (let i = 0; i < 6; i++) {
+      var id = "img" + (i + 1);
+      var img = document.getElementById(id);
+      console.log(img);
+      if (img.getAttribute('src') == "#") {
+        img.src = currentgif;
+        // Adds the URL of the current GIF to local storage with the image ID as the key
+        localStorage.setItem(id, currentgif);
+        return;
+      }
+    }
+  });
+  
+  // Sets the `src` attributes of the images based on the saved URLs from local storage
+  for (let i = 0; i < 6; i++) {
+    var id = "img" + (i + 1);
+    var img = document.getElementById(id);
+    var url = localStorage.getItem(id);
+    if (url) {
+      img.src = url;
+    }
+  }
+  
 function init() {
-    //document.getElementById("btnSearch").addEventListener("click", function() {
       event.preventDefault(); //to stop the page reload
-      //let url = `https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjEwODRjZjZlNGU0Y2MxZjdlZmFkOGI0OGU0ODQwZWZjN2JkYTUwMiZjdD1n/afL7JBQlA0jYglxFK8/giphy.gif`;
       getGiphy(poke);
     }; 
   
@@ -713,6 +696,14 @@ function init() {
   
   }
 
-  
-
-
+  // Added event listener to reset button
+document.getElementById('resetBtn').addEventListener('click', function() {
+    // Clears local storage
+    localStorage.clear();
+    // Sets the `src` attributes of the images back to the default "#"
+    for (let i = 0; i < 6; i++) {
+    var id = "img" + (i + 1);
+    var img = document.getElementById(id);
+    img.src = "#";
+    }
+});
