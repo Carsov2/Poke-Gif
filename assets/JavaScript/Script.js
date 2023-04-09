@@ -683,7 +683,7 @@ for (let i = 0; i < 6; i++) {
     var img = document.getElementById (id)
     console.log (img)
     if (img.getAttribute('src')=="#"){
-         img.src=currentgif
+         img.src = currentgif
          return
      }
 }

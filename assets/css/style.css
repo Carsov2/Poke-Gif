@@ -1,16 +1,16 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap%22");
+
+* {
   box-sizing: border-box;
 }
 
 body {
-margin: 0;
-padding: 0;
-}
-
-.img1 {
-background-image: url("..//images/pokemon-nature-pikachu-charmander-wallpaper-4664237548c040be06a0d9e164fe6dd4.jpg");
-background-size: 100%;
-/* background-position: 100%; */
+  margin: 0;
+  padding: 0;
+  background-image: url("..//images/pokemon-nature-pikachu-charmander-wallpaper-4664237548c040be06a0d9e164fe6dd4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 /* .text-muted {
@@ -18,24 +18,72 @@ background-size: 100%;
 } */
 
 .main-div {
-display: flex;
+  display: flex;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-container input {
+  flex: 1;
+}
+
+.game-console {
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.game-console .left-container {
+  flex: 0.3;
+}
+.game-console .right-container {
+  flex: 0.6;
+}
+
+.left-container {
+  gap: 20px;
 }
 
 .cards {
-height: 50%;
-padding: 7px;
-width: 31% !important;
+  height: 50%;
+  padding: 7px;
+  width: 31% !important;
 }
 
 .logo {
-width:80px;
+  width: 80px;
 }
 
 .poke-trainer {
-font-family: 'Bebas Neue', cursive;
-font-family: 'Permanent Marker', cursive;
-color:#FDD624;
-font-size:50px ;
+  font-family: "Bebas Neue", cursive;
+  font-family: "Permanent Marker", cursive;
+  color: #fdd624;
+  font-size: 50px;
 }
 
+.gif-container {
+  border: 2px solid rgba(255, 255, 0, 0.498);
+}
 
+.reset-container {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+.reset-container button {
+  padding: 20px 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .game-console {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reset-container {
+    position: relative;
+  }
+}
