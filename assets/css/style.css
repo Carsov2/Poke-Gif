@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap%22");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap');
 
-* {
+*{
   box-sizing: border-box;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .cards {
-  height: 50%;
+  height: 150px;
   padding: 7px;
   width: 31% !important;
 }
@@ -87,3 +87,16 @@ body {
     position: relative;
   }
 }
+
+section div img {
+  width: 200px;
+  height: 110px;
+  border-radius: 25px;
+  margin-top: 18px;
+}
+
+section div {
+  width: 600px;
+  height: 600px;
+}
+
