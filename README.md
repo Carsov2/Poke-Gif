@@ -1,5 +1,5 @@
 # Poke-Gif
-![ScreenShot](./assets/images/Screenshot.png)
+
 
 What was my motivation?
 
