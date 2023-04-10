@@ -673,7 +673,7 @@ Favorite.addEventListener("click", function () {
     for (let i = 0; i < 6; i++) {
     var id = "img" + (i + 1);
     let box = document.getElementById(id);
-    if (box.getAttribute("src") == "#") {
+    if (box.getAttribute("src") == "./assets/images/pokeball.png") {
         // if this is the first empty box we've found, save it to the emptyBox variable
         if (emptyBox == null) {
         emptyBox = box;
@@ -736,7 +736,7 @@ localStorage.clear();
 for (let i = 0; i < 6; i++) {
     var id = "img" + (i + 1);
     var img = document.getElementById(id);
-    img.src = "#";
+    img.src = "./assets/images/pokeball.png";
 }
 });
 
