@@ -1,8 +1,6 @@
 # Poke-Gif
 ![ScreenShot](./assets/images/ReadMe.png)
 
-<a href="">Project</a>
-
 What was my motivation?
 
 The motivation development was to allow the user to find their favorite Pokemon! As a Pokemon fan, I want to learn more about Pokemon, so that I am able to build a good team. 

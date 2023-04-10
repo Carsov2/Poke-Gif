@@ -620,7 +620,11 @@ var allPokemonData = [
 ];
 
 function getPokemons() {
-allPokemonData.forEach(i => {
+    // Clears the existing list items so list doesn't keep populating
+    dropItem.innerHTML = '';
+
+    // Adds the new list items
+    allPokemonData.forEach(i => {
     var li = document.createElement("li")
     var a = document.createElement("a")
     a.textContent = i.name
@@ -631,7 +635,7 @@ allPokemonData.forEach(i => {
     })
     li.appendChild(a)
     dropItem.appendChild(li)
-});
+    });
 }
 
 dropDownBtn.addEventListener("click", getPokemons)
@@ -651,50 +655,50 @@ var emptyimage;
 Favorite.addEventListener("click", function() {
     console.log(currentgif);
     for (let i = 0; i < 6; i++) {
-      var id = "img" + (i + 1);
-      var img = document.getElementById(id);
-      console.log(img);
-      if (img.getAttribute('src') == "#") {
+    var id = "img" + (i + 1);
+    var img = document.getElementById(id);
+    console.log(img);
+    if (img.getAttribute('src') == "#") {
         img.src = currentgif;
         // Adds the URL of the current GIF to local storage with the image ID as the key
         localStorage.setItem(id, currentgif);
         return;
-      }
     }
-  });
-  
+    }
+});
+
   // Sets the `src` attributes of the images based on the saved URLs from local storage
-  for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 6; i++) {
     var id = "img" + (i + 1);
     var img = document.getElementById(id);
     var url = localStorage.getItem(id);
     if (url) {
-      img.src = url;
+    img.src = url;
     }
-  }
-  
+}
+
 function init() {
       event.preventDefault(); //to stop the page reload
-      getGiphy(poke);
+    getGiphy(poke);
     }; 
-  
-  function getGiphy(pokeName) {
+
+function getGiphy(pokeName) {
     console.log(pokeName)
-  
-      let url = `https://api.giphy.com/v1/gifs/search?q=${pokeName}&api_key=${APIKEY}&limit=30`;
-  
-      fetch(url)
-      .then(response => response.json())
-      .then(content => {
+
+    let url = `https://api.giphy.com/v1/gifs/search?q=${pokeName}&api_key=${APIKEY}&limit=30`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(content => {
         console.log(content)
-      giphyImgEl.setAttribute("src", content.data[0].images.downsized.url);
-      currentgif = content.data[0].images.downsized.url;
-      })
-      .catch(err => {
-      console.error(err);
-      });
-  
-  }
+    giphyImgEl.setAttribute("src", content.data[0].images.downsized.url);
+    currentgif = content.data[0].images.downsized.url;
+    })
+    .catch(err => {
+    console.error(err);
+    });
+
+}
 
   // Added event listener to reset button
 document.getElementById('resetBtn').addEventListener('click', function() {
