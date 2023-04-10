@@ -669,20 +669,30 @@ var emptyimage;
 
 Favorite.addEventListener("click", function () {
     console.log(currentgif);
+    let emptyBox = null; // added this variable to keep track of the first empty box
     for (let i = 0; i < 6; i++) {
       var id = "img" + (i + 1);
       let box = document.getElementById(id);
-    //   var img = document.getElementById(id);
-    pokeBox(searchEl.value.toLowerCase(), box);
-    //   console.log(img);
       if (box.getAttribute("src") == "#") {
-        //   box.src = currentgif;
-        // Adds the URL of the current GIF to local storage with the image ID as the key
-        localStorage.setItem(id, currentgif);
+        // if this is the first empty box we've found, save it to the emptyBox variable
+        if (emptyBox == null) {
+          emptyBox = box;
+        }
+      } else if (box.getAttribute("src") == currentgif) {
+        // if this box already contains the current gif, return without doing anything
         return;
       }
     }
+  
+    // if we get here, it means the current gif is not in any of the boxes yet
+    if (emptyBox != null) {
+      // Adds the URL of the current GIF to local storage with the image ID as the key
+      localStorage.setItem(emptyBox.id, currentgif);
+      // update the empty box's src attribute using the pokeBox function
+      pokeBox(searchEl.value.toLowerCase(), emptyBox);
+    }
   });
+  
 
 // Sets the `src` attributes of the images based on the saved URLs from local storage
 function forloop() {
@@ -740,11 +750,8 @@ function pokeBox(pokeName, box) {
       return response.json();
     })
     .then((content) => {
-      console.log(content);
-      console.log(content.name);
-    //   name1.textContent = content.name;
       box.setAttribute("src", content.sprites.front_default);
-      return content
+
     })
     .catch((error) => {
       console.error(error);
