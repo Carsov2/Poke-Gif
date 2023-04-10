@@ -1,4 +1,5 @@
 # Poke-Gif
+
 ![ScreenShot](./assets/images/Screenshot.png)
 
 What was my motivation?
@@ -16,3 +17,4 @@ We solved the problem of using two different API's to create an HTML page to dis
 What did I learn?
 
 We learned how to properly code, using two different API's and styling, how to create the concept we wanted. 
+

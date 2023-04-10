@@ -621,33 +621,33 @@ var allPokemonData = [
 
 function getPokemons() {
   // Clears the existing list items so list doesn't keep populating
-  dropItem.innerHTML = "";
+dropItem.innerHTML = "";
 
   // Adds the new list items
-  allPokemonData.forEach((i) => {
+allPokemonData.forEach((i) => {
     var li = document.createElement("li");
     var a = document.createElement("a");
     a.textContent = i.name;
     a.classList.add("dropdown-item");
     a.href = "#";
     a.addEventListener("click", function () {
-      searchEl.value = i.name;
+    searchEl.value = i.name;
     });
     li.appendChild(a);
     dropItem.appendChild(li);
-  });
+});
 }
 
 dropDownBtn.addEventListener("click", getPokemons);
 
 $(function () {
-  $("#auto-complete").autocomplete({
+$("#auto-complete").autocomplete({
     source: allPokemonData.map(({ name }) => name),
-  });
+});
 });
 
 searchBtn.addEventListener("click", function () {
-  getGiphy(searchEl.value);
+getGiphy(searchEl.value);
 });
 var currentgif;
 var emptyimage;
@@ -659,8 +659,8 @@ var emptyimage;
 //     var img = document.getElementById(id);
 //     console.log(img);
 //     if (img.getAttribute("src") == "#") {
-//       //   img.src = currentgif;
-//       // Adds the URL of the current GIF to local storage with the image ID as the key
+      //   img.src = currentgif;
+      // Adds the URL of the current GIF to local storage with the image ID as the key
 //       localStorage.setItem(id, currentgif);
 //       return;
 //     }
@@ -671,28 +671,28 @@ Favorite.addEventListener("click", function () {
     console.log(currentgif);
     let emptyBox = null; // added this variable to keep track of the first empty box
     for (let i = 0; i < 6; i++) {
-      var id = "img" + (i + 1);
-      let box = document.getElementById(id);
-      if (box.getAttribute("src") == "#") {
+    var id = "img" + (i + 1);
+    let box = document.getElementById(id);
+    if (box.getAttribute("src") == "#") {
         // if this is the first empty box we've found, save it to the emptyBox variable
         if (emptyBox == null) {
-          emptyBox = box;
+        emptyBox = box;
         }
-      } else if (box.getAttribute("src") == currentgif) {
+    } else if (box.getAttribute("src") == currentgif) {
         // if this box already contains the current gif, return without doing anything
         return;
-      }
     }
-  
+    }
+
     // if we get here, it means the current gif is not in any of the boxes yet
     if (emptyBox != null) {
       // Adds the URL of the current GIF to local storage with the image ID as the key
-      localStorage.setItem(emptyBox.id, currentgif);
-      // update the empty box's src attribute using the pokeBox function
-      pokeBox(searchEl.value.toLowerCase(), emptyBox);
+    localStorage.setItem(emptyBox.id, currentgif);
+      // updates the empty box's src attribute using the pokeBox function
+    pokeBox(searchEl.value.toLowerCase(), emptyBox);
     }
-  });
-  
+});
+
 
 // Sets the `src` attributes of the images based on the saved URLs from local storage
 function forloop() {
@@ -705,55 +705,56 @@ function forloop() {
     }
     }
 }
+
 function init() {
   event.preventDefault(); //to stop the page reload
-  getGiphy(poke);
+getGiphy(poke);
 }
 
 function getGiphy(pokeName) {
-  console.log(pokeName);
+console.log(pokeName);
 
-  let url = `https://api.giphy.com/v1/gifs/search?q=${pokeName}&api_key=${APIKEY}&limit=30`;
+let url = `https://api.giphy.com/v1/gifs/search?q=${pokeName}&api_key=${APIKEY}&limit=30`;
 
-  fetch(url)
+fetch(url)
     .then((response) => response.json())
     .then((content) => {
-      console.log(content);
-      giphyImgEl.setAttribute("src", content.data[0].images.downsized.url);
-      currentgif = content.data[0].images.downsized.url;
+    console.log(content);
+    giphyImgEl.setAttribute("src", content.data[0].images.downsized.url);
+    currentgif = content.data[0].images.downsized.url;
     })
     .catch((err) => {
-      console.error(err);
+    console.error(err);
     });
 }
 
 // Added event listener to reset button
 document.getElementById("resetBtn").addEventListener("click", function () {
   // Clears local storage
-  localStorage.clear();
+localStorage.clear();
   // Sets the `src` attributes of the images back to the default "#"
-  for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 6; i++) {
     var id = "img" + (i + 1);
     var img = document.getElementById(id);
     img.src = "#";
-  }
+}
 });
 
 function pokeBox(pokeName, box) {
-  let url = `https://pokeapi.co/api/v2/pokemon/${pokeName}`;
+let url = `https://pokeapi.co/api/v2/pokemon/${pokeName}`;
 
-  fetch(url)
+fetch(url)
     .then((response) => {
-      if (!response.ok) {
+    if (!response.ok) {
         throw new Error("Pokemon not found");
-      }
-      return response.json();
+    }
+    return response.json();
     })
     .then((content) => {
-      box.setAttribute("src", content.sprites.front_default);
+    box.setAttribute("src", content.sprites.front_default);
 
     })
     .catch((error) => {
-      console.error(error);
+    console.error(error);
     });
 }
